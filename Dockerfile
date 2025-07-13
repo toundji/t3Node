@@ -13,12 +13,10 @@ RUN npm install
 COPY --chown=node:node . .
 
 RUN npm rebuild typescript
-RUN npm run build
 
 
 ENV NODE_ENV=production
 
 EXPOSE 3000
 
-CMD ["node", "dist/main.js"]
-# CMD ["sh", "-c", "npm run build && npm run seed && node dist/main.js"]
+CMD ["sh", "-c", "npm run build && npm run seed && node dist/main.js"]

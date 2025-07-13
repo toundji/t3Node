@@ -5,53 +5,47 @@
 
 ## Installation
 
-Install project dependencies using:
+### Using Docker
+You can run the full stack (API + MongoDB) using Docker with a single command.
+```bash
+docker compose up --build
+```
 
+### Without Docker
+Install project dependencies using:
 ```bash
 npm i
 ```
 
-## Database Setup
+#### Database Setup
 
 1. **Create a MongoDB database** (locally or using a cloud service like MongoDB Atlas).
 2. In the root directory, create a `.env` file (if not already present) and configure your MongoDB connection string:
-
 ```code
 DB_URL=mongodb://localhost:27017/t3node
 ```
-
 3. To seed the database with initial data, run the following command:
-
 ```bash
 npm run seed
 ```
-
 This will populate the database with required initial admin with this information
-
 ```markdown
 email: 'admin@atoundji.com',
 password: 'atoundji.com',
 ```
 
-
-
-## Project Compilation & Development
-
+#### Compilation
 To compile and run the project in development mode:
-
 ```bash
 npm run dev
 ```
-
 This command starts the development server with hot reloading enabled (depending on your setup, e.g., ts-node-dev or nodemon).
 
 
 
 ## Authentication & Security
-
 This project implements a three-level security layer:
-
- API Key (Required for all requests)
+API Key (Required for all requests)
 All incoming requests must include a valid x-api-key header. This key is checked against the value stored in .env.
 
 ```bash
@@ -60,43 +54,33 @@ x-api-key: aX9BtW3rYzLpM7uKfDqE0NsVjTgCHi2Z
 ```
 
 ### JWT Authentication
-
 Used for protected endpoints requiring user identity:
-
 ```bash
 Example:
 Authorization: Bearer x-api-key: aX9BtW3rYzLpM7uKfDqE0NsVjTgCHi2Z....
 ```
 
 ### Basic Auth for Swagger Access
-
 Access to the Swagger documentation is protected using Basic Authentication.
 These credentials are stored in the .env file as:
-
 ```bash
 DOC_USER_NAME="contact@atoundji.com"
 DOC_PASSWORD="Password@1234"
 ```
-
 Without valid credentials, access to the documentation will be denied.
 
 ## API Documentation
-
 The API is documented using **Swagger (OpenAPI)**.
 Once the server is running, you can access the interactive documentation in your browser at:
 
 ```
 http://localhost:3000/docs
 ```
-
 The documentation includes details about all available endpoints, request formats and  response types  structures.
 
 
-
 ## Project Structure
-
 The project is organized with a clean and scalable architecture:
-
 ```
 ├── controllers/        # Handles HTTP requests and delegates to services
 ├── services/           # Business logic for each domain

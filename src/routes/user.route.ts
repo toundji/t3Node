@@ -10,7 +10,7 @@ const router = Router();
 
 router.get("/", requirePermission('admin'), userController.getList)
 router.get("/:id", validation.paramValidationMid(IdDto), userController.findOneById);
-router.post("/", validation.bodyValidationMid(UserCreateDto), userController.createOneByAdmin);
+router.post("/", requirePermission('admin'), validation.bodyValidationMid(UserCreateDto), userController.createOneByAdmin);
 router.put("/:id", requirePermission('admin'), validation.paramBodyValidationMid(IdDto, UserUpDto), userController.updateOne);
 router.get("/my/profile", userController.myInfo);
 router.put("/my/profile", validation.bodyValidationMid(UserUpDto), userController.updateMyInfo);
