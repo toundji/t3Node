@@ -5,6 +5,7 @@ import UserModel from '../../entities/user.entity';
 
 dotenv.config();
 
+console.log(process.env.DB_URL);
 
 const data = [
     {

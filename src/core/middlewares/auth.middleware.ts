@@ -10,7 +10,7 @@ export const deserialization = (req: Request | any, res: Response, next: NextFun
     if (!bearer || !bearer.startsWith('Bearer ')) {
         auth.logged = false;
         auth.type = ErrorType.BAD_TOKEN;
-        auth.message = !bearer ? 'Authentication token not defined' : 'Authentication token badly formatted';
+        auth.message = !bearer || bearer =='' ? 'Authentication token not defined' : 'Authentication token badly formatted';
         req.auth = auth;
         return next();
     }
@@ -28,10 +28,10 @@ export const deserialization = (req: Request | any, res: Response, next: NextFun
 
         if (error instanceof TokenExpiredError) {
             auth.type = ErrorType.TOKEN_EXPIRED;
-            auth.message = 'Token has expired';
+            auth.message = 'Session has expired';
         } else if (error instanceof JsonWebTokenError || error instanceof NotBeforeError) {
             auth.type = ErrorType.BAD_TOKEN;
-            auth.message = 'Invalid JWT';
+            auth.message = 'Invalid token';
         } else {
             auth.type = ErrorType.BAD_TOKEN;
             auth.message = 'An unknown error occurred while verifying token';

@@ -8,7 +8,7 @@
     "build": "tsc",
     "start": "node dist/main.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "tsc && npx node dist/core/seed/user.seed.js"
+    "seed": "npx node dist/core/seed/user.seed.js"
   },
   "keywords": [],
   "author": "",

@@ -4,7 +4,6 @@ services:
   app:
     build: .
     container_name: t3node-app
-    restart: unless-stopped
     ports:
       - "3000:3000"
     env_file:
@@ -12,8 +11,10 @@ services:
     depends_on:
       - mongo
     volumes:
-      - .:/app
-      - /app/node_modules  # pour éviter les conflits node_modules local
+      - .:/home/node/app
+      - /home/node/app/node_modules
+    command: sh -c "npm run seed && node dist/main.js"
+
 
   mongo:
     image: mongo:5
@@ -23,6 +24,8 @@ services:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
+    command: ["mongod", "--quiet", "--logpath", "/dev/null"]
+
 
 volumes:
   mongo-data:
