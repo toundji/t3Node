@@ -61,7 +61,7 @@ x-api-key: aX9BtW3rYzLpM7uKfDqE0NsVjTgCHi2Z
 Used for protected endpoints requiring user identity:
 ```bash
 Example:
-Authorization: Bearer x-api-key: aX9BtW3rYzLpM7uKfDqE0NsVjTgCHi2Z....
+Authorization: Bearer aX9BtW3rYzLpM7uKfDqE0NsVjTgCHi2Z....
 ```
 
 #### Basic Auth for Swagger Access
