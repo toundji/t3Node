@@ -1,5 +1,5 @@
 {
-  "exec": "ts-node src/main.ts",
+  "exec": "tsc  && node dist/main.ts",
   "watch": ["src"],
   "ignore": ["dist"],
   "ext": "ts"
