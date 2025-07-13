@@ -1,5 +1,4 @@
 import { ApiKeyError, ErrorType, ForbiddenError, TokenError } from "../../core/custom-error";
-import { getIp } from "../utils";
 import { NextFunction, Request, Response } from "express";
 import jwt, { TokenExpiredError, JsonWebTokenError, NotBeforeError } from 'jsonwebtoken';
 
@@ -10,7 +9,7 @@ export const deserialization = (req: Request | any, res: Response, next: NextFun
     if (!bearer || !bearer.startsWith('Bearer ')) {
         auth.logged = false;
         auth.type = ErrorType.BAD_TOKEN;
-        auth.message = !bearer || bearer =='' ? 'Authentication token not defined' : 'Authentication token badly formatted';
+        auth.message = !bearer || bearer == '' ? 'Authentication token not defined' : 'Authentication token badly formatted';
         req.auth = auth;
         return next();
     }
@@ -76,7 +75,9 @@ const auth = (req: Request | any, res: Response, next: NextFunction) => {
     if (auth?.logged === true) {
         if (req.user?.status === true) {
             next();
-        } else { throw new ForbiddenError("Account blocked") }
+        } else {
+            throw new ForbiddenError("Account blocked")
+        }
     } else {
         throw new TokenError({ token: auth?.token, type: auth?.type }, auth?.message)
     }

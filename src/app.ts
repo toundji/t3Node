@@ -9,6 +9,7 @@ import path from "path";
 import connectDb from "./core/database";
 import swaggerDocs from "./core/swaggers";
 import * as dotenv from 'dotenv';
+import { NotFoundError } from "./core/custom-error";
 const basicAuth = require('express-basic-auth')
 
 
@@ -54,6 +55,8 @@ app.use(apiKeyVerification);
 app.use(deserialization);
 app.use("/api/auth", authRouter);
 app.use("/api/users", auth, userRouter);
+
+app.use((req, res, next) => next(new NotFoundError("Invalid path")));
 
 
 app.use(errorMiddleware);

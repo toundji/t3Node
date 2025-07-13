@@ -17,6 +17,10 @@ async function login(body: LoginDto) {
         throw new ForbiddenError("Username or password invalid")
     }
 
+    if (!user.status) {
+        throw new ForbiddenError("Account blocked. Please contact an admin for more information")
+    }
+
     const valid = bcrypt.compare(body.password!, user.password!);
 
     if (!valid) {

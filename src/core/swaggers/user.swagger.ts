@@ -128,7 +128,7 @@ export const _userRoutes: any = {
             }
         }
     },
-    '/api/my/profile': {
+    '/api/users/my/profile': {
         get: {
             summary: 'current user information',
             security: [

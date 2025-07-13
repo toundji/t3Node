@@ -1,12 +1,12 @@
 import { Type } from "class-transformer";
-import { IsBoolean, IsDateString, IsEmail, IsEnum, IsMongoId, IsNotEmpty, IsNumber, IsOptional, IsString, IsUrl, Min, MinLength } from "class-validator";
+import { IsBoolean, IsDateString, IsEmail, IsEnum, IsMongoId, IsNotEmpty, IsNumber, IsOptional, IsString, IsUrl, MaxLength, Min, MinLength } from "class-validator";
 import { UserRole } from "../core/enums/user-role";
 
 export class UserDto {
 
     @IsString()
     @MinLength(3)
-    @MinLength(200)
+    @MaxLength(200)
     @IsNotEmpty()
     name?: string;
 
@@ -42,7 +42,7 @@ export class RegisterDto {
 
     @IsString()
     @MinLength(3)
-    @MinLength(200)
+    @MaxLength(200)
     @IsNotEmpty()
     name?: string;
 
