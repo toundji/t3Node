@@ -1,12 +1,12 @@
 
-# t3node – Node.js + TypeScript + Mongoose Webservice
+# t3node – TypeScript + Mongoose
 
 **t3node** is a modular, scalable RESTful webservice built using **Node.js**, **TypeScript**, **Mongoose**,  **JWT**, and  **Swagger**,
 
 ## Installation
 
 ### Using Docker
-You can run the full stack (API + MongoDB) using Docker with a single command.
+You can run this api using Docker with a single command.
 ```bash
 docker compose up --build
 ```
@@ -20,11 +20,21 @@ npm i
 #### Database Setup
 
 1. **Create a MongoDB database** (locally or using a cloud service like MongoDB Atlas).
-2. In the root directory, create a `.env` file (if not already present) and configure your MongoDB connection string:
+2. in .env file in root directory, configure your MongoDB connection string:
 ```code
 DB_URL=mongodb://localhost:27017/t3node
 ```
-3. To seed the database with initial data, run the following command:
+
+#### Compilation
+To compile and run the project in development mode:
+```bash
+npm run dev
+```
+This command starts the development server with hot reloading enabled .
+
+#### Populate data
+To seed the database with initial data, run the following command:
+
 ```bash
 npm run seed
 ```
@@ -33,13 +43,6 @@ This will populate the database with required initial admin with this informatio
 email: 'admin@atoundji.com',
 password: 'atoundji.com',
 ```
-
-#### Compilation
-To compile and run the project in development mode:
-```bash
-npm run dev
-```
-This command starts the development server with hot reloading enabled (depending on your setup, e.g., ts-node-dev or nodemon).
 
 
 
