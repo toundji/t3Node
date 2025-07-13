@@ -48,7 +48,8 @@ password: 'atoundji.com',
 
 ## Authentication & Security
 This project implements a three-level security layer:
-API Key (Required for all requests)
+
+#### API Key (Required for all requests)
 All incoming requests must include a valid x-api-key header. This key is checked against the value stored in .env.
 
 ```bash
@@ -56,14 +57,15 @@ Example:
 x-api-key: aX9BtW3rYzLpM7uKfDqE0NsVjTgCHi2Z
 ```
 
-### JWT Authentication
+#### JWT Authentication
 Used for protected endpoints requiring user identity:
 ```bash
 Example:
 Authorization: Bearer x-api-key: aX9BtW3rYzLpM7uKfDqE0NsVjTgCHi2Z....
 ```
 
-### Basic Auth for Swagger Access
+#### Basic Auth for Swagger Access
+
 Access to the Swagger documentation is protected using Basic Authentication.
 These credentials are stored in the .env file as:
 ```bash
